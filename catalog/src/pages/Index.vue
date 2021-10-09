@@ -15,7 +15,7 @@
             {{card.description}}
           </q-card-section>
           <q-card-actions align="right">
-            <q-btn flat round color="red" icon="message" />
+            <q-btn flat round color="red" icon="message" :to="'/chat/' + card.name" />
             <q-btn flat round color="teal" icon="phone" />
             <q-btn flat round color="grey" icon="favorite" />
           </q-card-actions>
