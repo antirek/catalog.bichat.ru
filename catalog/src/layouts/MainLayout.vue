@@ -3,7 +3,9 @@
     <q-header elevated  padding class="docs-btn row justify-center">
       <q-toolbar style="width: 1000px; max-width: 190vw;">
         <q-toolbar-title>
-          <strong>Бизнес-чат / Каталог</strong>
+          <strong>Бизнес-чат / 
+            <router-link to="/" class="none">Каталог</router-link>
+          </strong>
         </q-toolbar-title>
       
       </q-toolbar>

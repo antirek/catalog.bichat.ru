@@ -4,8 +4,22 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
-    ]
+      { 
+        path: '',
+        component: () => import('pages/Index.vue'),
+      },
+    ],
+  },
+  {
+    path: '/card',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { 
+        path: ':id', 
+        component: () => import('pages/Card.vue'),
+        props: true,
+      },
+    ],
   },
 
   // Always leave this as last one,

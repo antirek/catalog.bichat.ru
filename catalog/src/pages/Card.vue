@@ -1,34 +1,30 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="q-pa-md row items-start q-gutter-md">
-      <div v-for="(card, index) in cards" :key="index">
-        <q-card class="my-card">
-          <router-link :to="'/card/' + card.name">
-            <img :src="card.img" style="padding:30px">
-          </router-link>
-          <q-card-section>
-            <div class="text-h6">{{card.header}}</div>
-            <div class="text-subtitle2"></div>
-          </q-card-section>
+    <div class="q-pa-md row items-start q-gutter-md">      
+      <q-card class="my-card">
+        <router-link :to="'/card/' + card.name">
+          <img :src="card.img" style="padding:30px">
+        </router-link>
+        <q-card-section>
+          <div class="text-h6">{{card.header}}</div>
+          <div class="text-subtitle2"></div>
+        </q-card-section>
 
-          <q-card-section class="q-pt-none">
-            {{card.description}}
-          </q-card-section>
-          <q-card-actions align="right">
-            <q-btn flat round color="red" icon="message" />
-            <q-btn flat round color="teal" icon="phone" />
-            <q-btn flat round color="grey" icon="favorite" />
-          </q-card-actions>
-        </q-card>
-
-      </div>
+        <q-card-section class="q-pt-none">
+          {{card.description}}
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat round color="red" icon="message" />
+          <q-btn flat round color="teal" icon="phone" />
+          <q-btn flat round color="grey" icon="favorite" />
+        </q-card-actions>
+      </q-card>
     </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-
 
 const cards = [
   {
@@ -58,15 +54,22 @@ const cards = [
             - путешествия и отдых в горах,<br/>
             - экскурсии в пещеры`,
   }
-]
+];
 
 export default defineComponent({
-  name: 'PageIndex',
-  data: function () {
-    return {
-      cards,
-    }
-  }
+  name: 'Card',
+  methods: {
+    getCard: function (id) {      
+      const card = cards.find(card => card.name === id);
+      return card;
+    },
+  },
+  computed: {
+    card: function () {
+      console.log(this.$route.params.id);
+      return this.getCard(this.$route.params.id)
+    },
+  },
 })
 </script>
 
