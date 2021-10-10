@@ -7,7 +7,9 @@
             <router-link to="/" class="none">Каталог</router-link>
           </strong>
         </q-toolbar-title>
-      
+         <q-space />
+        <q-btn label="Login" flat to="/login" v-if="!authenticated"/>
+        
       </q-toolbar>
     </q-header>
 
@@ -68,7 +70,11 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'MainLayout',
-
+  data: function () {
+    return {
+      authenticated: false,
+    }
+  },
   setup () {
     const leftDrawerOpen = ref(false)
 
