@@ -17,10 +17,21 @@
           
         </q-item-section>
         <q-item-section side>
-          <q-btn flat round color="red" icon="message" :to="'/card/' + card.name"/>
+          
         </q-item-section>
       </q-item>
 
+        <q-tabs
+          v-model="tab"
+          dense
+          class="bg-grey-3"
+          align="left"
+          narrow-indicator
+        >
+          <q-route-tab name="mails" label="Info" :to="'/card/'+card.name"/>
+          <q-route-tab name="chat" label="Chat" :to="'/chat/'+card.name"/>
+          
+        </q-tabs>
       <q-separator />
 
       <q-card-section horizontal>
@@ -109,7 +120,8 @@ const cards = [
 export default defineComponent({
   name: 'Card',
   data: function () {
-            return {
+          return {
+            tab: 'chat',
             visible: true,
             participants: [
                 {

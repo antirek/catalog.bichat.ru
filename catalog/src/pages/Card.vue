@@ -1,24 +1,48 @@
 <template>
-  <q-page class="flex flex-center">
-    <div class="q-pa-md row items-start q-gutter-md">      
-      <q-card class="my-card">
-        <router-link :to="'/card/' + card.name">
-          <img :src="card.img" style="padding:30px">
-        </router-link>
-        <q-card-section>
-          <div class="text-h6">{{card.header}}</div>
-          <div class="text-subtitle2"></div>
-        </q-card-section>
+  <q-page class="flex justify-center">
+    <div class="full-width row  justify-center q-pa-md">  
+      <q-card class="my-card" flat bordered>
+      <q-item>
+        <q-item-section avatar>
+          <q-avatar size="75px">
+            <img :src="card.img">
+          </q-avatar>
+        </q-item-section>
 
-        <q-card-section class="q-pt-none">
-          {{card.description}}
-        </q-card-section>
-        <q-card-actions align="right">
-          <q-btn flat round color="red" icon="message" />
-          <q-btn flat round color="teal" icon="phone" />
-          <q-btn flat round color="grey" icon="favorite" />
-        </q-card-actions>
-      </q-card>
+        <q-item-section>
+          <q-item-label>{{card.name}}</q-item-label>
+          <q-item-label caption>
+            {{card.header}}
+          </q-item-label>
+          
+        </q-item-section>
+        <q-item-section side>
+          
+        </q-item-section>
+      </q-item>
+
+        <q-tabs
+          v-model="tab"
+          dense
+          class="bg-grey-3"
+          align="left"
+          narrow-indicator
+        >
+          <q-route-tab name="mails" label="Info" :to="'/card/' + card.name" />
+          <q-route-tab name="chat" label="Chat" :to="'/chat/' + card.name" />
+          
+        </q-tabs>
+      <q-separator />
+
+      <q-card-section horizontal>
+        
+
+        
+      </q-card-section>
+    </q-card>
+
+
+    
     </div>
   </q-page>
 </template>
@@ -58,6 +82,11 @@ const cards = [
 
 export default defineComponent({
   name: 'Card',
+  data: function () {
+    return { 
+      tab: 'info',
+    };
+  },
   methods: {
     getCard: function (id) {      
       const card = cards.find(card => card.name === id);
@@ -76,6 +105,7 @@ export default defineComponent({
 <style lang="sass" scoped>
 .my-card
   width: 100%
-  max-width: 450px
+  max-width: 650px
+  min-widht: 650px
   min-height: 400px
 </style>
