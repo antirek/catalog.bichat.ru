@@ -9,7 +9,14 @@
         </q-toolbar-title>
          <q-space />
         <q-btn label="Login" flat to="/login" v-if="!authenticated"/>
-        <q-btn label="Profile" flat to="/profile" v-if="authenticated"/>
+        <q-btn flat>
+          <q-chip v-if="authenticated">
+            <q-avatar>
+              <img :src="user.avatarUrl">
+            </q-avatar>
+            {{ user.name }}
+          </q-chip>
+        </q-btn>
         
       </q-toolbar>
     </q-header>
@@ -74,6 +81,9 @@ export default defineComponent({
   computed: {
     authenticated () {
       return this.$store.getters['user/isAuthenticated'];
+    },
+    user () {
+      return this.$store.getters['user/user'];
     }
   },
   mounted () {

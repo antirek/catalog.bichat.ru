@@ -20,7 +20,8 @@ app.post('/login', async (req, res) => {
     res.json({
       status: 'OK', 
       authKey: '345345798347534795798',
-      name: 'Authh',
+      name: 'Auth User',
+      avatarUrl: 'https://cdn.quasar.dev/img/avatar2.jpg',
     });
     /*
     const user = await User.findOne({mobile, code});

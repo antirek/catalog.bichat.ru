@@ -9,6 +9,12 @@ const getters = {
   name: (state) => state.name,
   authKey: (state) => state.authKey,
   isAuthenticated: (state) => state.authKey ? true : false,
+  user: (state) => {
+      return {
+          name: state.name,
+          avatarUrl: state.avatarUrl,
+      }
+  }
 };
 
 const actions = {
@@ -28,6 +34,7 @@ const mutations = {
     console.log('user', payload)
     state.authKey = payload.authKey;
     state.name = payload.name;
+    state.avatarUrl = payload.avatarUrl;
   },
 };
 
