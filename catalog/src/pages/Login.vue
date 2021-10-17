@@ -18,7 +18,10 @@
 </template>
 
 <script>
+
 import { defineComponent } from 'vue';
+import { mapGetters } from 'vuex';
+
 import { User} from '../api/api';
 
 export default defineComponent({
@@ -29,10 +32,27 @@ export default defineComponent({
         code: '',
     }
   },
+  created: function () {
+    if (this.$store.getters['user/isAuthenticated']) {
+      this.$router.push('/')
+    }
+  },
   methods: {
-      login: function() {
-          User.login(this.mobile, this.code);
+    login: async function() {
+      const response = await User.login(this.mobile, this.code);
+      console.log('r', response);
+      if (!response.data.authKey) {
+        console.log('no auth');
       }
+
+      this.$store.commit('user/USER_SET', response.data);
+      this.$router.push('/')
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'user/isAuthenticated',
+    ])
   }
 })
 </script>

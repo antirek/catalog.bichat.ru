@@ -17,10 +17,17 @@ app.post('/login', async (req, res) => {
     const {mobile, code} = req.body;
     console.log('POST event', {mobile, code});
 
+    res.json({
+      status: 'OK', 
+      authKey: '345345798347534795798',
+      name: 'Authh',
+    });
+    /*
     const user = await User.findOne({mobile, code});
     if (!user) {
       return res.json({status: 'FAIL'});
     }
+    */
   } catch (e) {
     console.log('err', e);
   }

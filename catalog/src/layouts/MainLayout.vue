@@ -9,6 +9,7 @@
         </q-toolbar-title>
          <q-space />
         <q-btn label="Login" flat to="/login" v-if="!authenticated"/>
+        <q-btn label="Profile" flat to="/profile" v-if="authenticated"/>
         
       </q-toolbar>
     </q-header>
@@ -70,10 +71,17 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'MainLayout',
-  data: function () {
-    return {
-      authenticated: false,
+  computed: {
+    authenticated () {
+      return this.$store.getters['user/isAuthenticated'];
     }
+  },
+  mounted () {
+    console.log('mounted')
+      console.log('qwqw', this.$store.getters['user/isAuthenticated'])
+      console.log('qwqw', this.$store.getters['user/name'])
+      console.log('qwqw', this.$store.getters['user/authKey'])
+      console.log('qwqw', this.$store.getters)
   },
   setup () {
     const leftDrawerOpen = ref(false)

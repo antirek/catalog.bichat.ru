@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Book = resource('/api/books', axios);
 const User = resource('http://localhost:3100/', {
-  login: (mobile, code) => axios.post(`http://localhost:3100/login`, {
+  login: async (mobile, code) => await axios.post(`http://localhost:3100/login`, {
     mobile,
     code,
   }),
