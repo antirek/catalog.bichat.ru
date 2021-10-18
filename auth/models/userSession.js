@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const userSessionSchema = new Schema({
   userId: String,
-  mobile: String,
-  code: String,
+  authKey: String,
 });
 
 module.exports = {
-  userSchema,
+  userSessionSchema,
 }

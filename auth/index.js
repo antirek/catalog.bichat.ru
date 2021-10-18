@@ -2,7 +2,7 @@ const express = require('express');
 const config = require('config');
 const cors = require('cors');
 
-const {User} = require('./models');
+const {User, Company} = require('./models');
 
 const app = express();
 app.use(express.json({limit: '10mb'}));
@@ -33,6 +33,12 @@ app.post('/login', async (req, res) => {
     console.log('err', e);
   }
   res.json({status: 'OK'});
+});
+
+app.get('/companies', async (req, res) => {
+  const companies = await Company.find();
+  console.log('companies', companies);
+  res.json(companies);
 });
 
 app.listen(config.port, () => {

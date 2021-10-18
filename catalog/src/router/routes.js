@@ -14,8 +14,8 @@ const routes = [
     path: '/card',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { 
-        path: ':id', 
+      {
+        path: ':id',
         component: () => import('pages/Card.vue'),
         props: true,
       },
@@ -39,6 +39,16 @@ const routes = [
       { 
         path: '',
         component: () => import('pages/Login.vue'),
+      },
+    ],
+  },
+  {
+    path: '/profile',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { 
+        path: '',
+        component: () => import('pages/Profile.vue'),
       },
     ],
   },

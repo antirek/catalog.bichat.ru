@@ -9,7 +9,10 @@ const User = resource('http://localhost:3100/', {
   }),
 }, axios);
 
+const Company = resource('http://localhost:3100/companies', axios);
+
 export {
   Book,
   User,
+  Company,
 }

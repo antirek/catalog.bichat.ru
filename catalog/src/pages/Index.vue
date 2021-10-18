@@ -33,13 +33,12 @@ import { defineComponent } from 'vue';
 const cards = [
   {
     name: 'mvideo',
-    img: 'https://cms.mvideo.ru/magnoliaPublic/dam/jcr:3c0c7e7e-d07f-4ecd-aa6d-6c4d11cda8f7',
+    logoUrl: 'https://cms.mvideo.ru/magnoliaPublic/dam/jcr:3c0c7e7e-d07f-4ecd-aa6d-6c4d11cda8f7',
     header: 'С нами удобно!',
     description: '',
   },
   {
-    name: 'kvantorium',
-    img: 'https://kvantorium24.ru/wp-content/uploads/2018/08/kvant-logo.png',
+    name: 'kvantorium', logoUrl: 'https://kvantorium24.ru/wp-content/uploads/2018/08/kvant-logo.png',
     header: '',
     description: '«Кванториум» – уникальная среда для ускоренного развития ребёнка по актуальным научно-исследовательским и инженерно-техническим направлениям',
   },
