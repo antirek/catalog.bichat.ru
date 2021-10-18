@@ -86,7 +86,6 @@
 
 <script>
 import { defineComponent } from 'vue';
-
 import { Company } from '../api/api';
 
 export default defineComponent({
@@ -118,8 +117,8 @@ export default defineComponent({
     },
   },
   mounted () {
-    this.companies = this.loadCompanies();
-  }
+    this.loadCompanies();
+  },
 })
 </script>
 
