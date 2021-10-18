@@ -10,13 +10,16 @@ const dbConnection = mongoose.createConnection(config.get('mongodb'), {
 const {userSchema} = require('./user');
 const {userSessionSchema} = require('./userSession');
 const {companySchema} = require('./company');
+const {userCompanySchema} = require('./userCompany');
 
 const User = dbConnection.model('users', userSchema);
 const UserSession = dbConnection.model('usersessions', userSessionSchema);
 const Company = dbConnection.model('companies', companySchema);
+const UserCompany = dbConnection.model('usercompanies', userCompanySchema);
 
 module.exports = {
   User,
   UserSession,
   Company,
+  UserCompany,
 }
