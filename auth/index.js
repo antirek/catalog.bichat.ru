@@ -2,11 +2,14 @@ const express = require('express');
 const config = require('config');
 const cors = require('cors');
 
-const {User, Company} = require('./models');
-
 const app = express();
+
+const {companiesRouter} = require('./routes/companies');
+
 app.use(express.json({limit: '10mb'}));
 app.use(cors());
+
+app.use('/companies', companiesRouter);
 
 app.get('/', async (req, res) => {
   res.send('OK');
@@ -32,13 +35,7 @@ app.post('/login', async (req, res) => {
   } catch (e) {
     console.log('err', e);
   }
-  res.json({status: 'OK'});
-});
-
-app.get('/companies', async (req, res) => {
-  const companies = await Company.find();
-  console.log('companies', companies);
-  res.json(companies);
+  //res.json({status: 'OK'});
 });
 
 app.listen(config.port, () => {
